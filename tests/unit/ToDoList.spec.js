@@ -61,4 +61,14 @@ describe("ToDoList.vue", () => {
     expect(wrapper.find('.total-tasks').text()).toContain('0');
     expect(wrapper.find('.completed-tasks').text()).toContain('0');
   })
+
+  it("Shows no tasks message when the task list is empty. It should not be visible when there are tasks in the list", async () => {
+    const wrapper = mount(ToDoList)
+    const taskInput = wrapper.find("[data-unit='taskInput']")
+    expect(wrapper.find(".no-todo-message").text()).toBe("You have no tasks")
+    await taskInput.setValue("Buy Milk")
+    await taskInput.trigger("keyup.enter")
+    expect(wrapper.vm.$data.tasks.length).toBe(1)
+    expect(wrapper.findAll(".no-todo-message").length).toBe(0)
+  })
 })
