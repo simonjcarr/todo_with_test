@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div v-if="tasks.length == 0" class="no-todo-message">You have no tasks</div>
+    <div v-if="tasks.length == 0" class="no-todo-message mt-4 text-lg text-green-500 font-semibold">You have no tasks</div>
   </div>
 </template>
 
